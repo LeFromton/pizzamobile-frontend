@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PizzaComponent } from './pizza/pizza.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pizzamobile-frontend';
+
+  pizzas = [
+    { "name": "Margherita", "ingredients": "Tomate, mozzarella, origan" },
+    { "name": "Napoli", "ingredients": "Tomate, mozzarella, câpre, anchois, olive, origan" },
+    { "name": "Peperoni", "ingredients": "Tomate, mozzarella, poivrons, olives noires, origan" },
+    { "name": "Diavola", "ingredients": "Tomate, mozzarella, chorizo, poivrons, ail, origan" },
+  ];
+
+  ngOnInit() {
+    this.pizzas;
+  }
 }
