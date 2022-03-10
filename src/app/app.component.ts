@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { CartComponent } from './cart/cart.component';
 import { PizzaComponent } from './pizza/pizza.component';
+
+
 
 @Component({
   selector: 'app-root',
