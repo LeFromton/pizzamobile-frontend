@@ -1,29 +1,8 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-</style>
-<div class="bg-light bg-gradient pb-4">
+<div class="main-container pb-4">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Pizzamobile</a>
+      <a class="navbar-brand" href="#">Utilisateur</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -35,36 +14,12 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pizza</a>
-          </li>
-        </ul>
-      </div>
     </div>
   </nav>
 
-  <h1 class="text-center mt-4">Order Pizza</h1>
+  <app-cashier-view *ngIf="isCashier"></app-cashier-view>
+  <app-chef-view *ngIf="isChef"></app-chef-view>
+  <app-delivery-view *ngIf="isDelivery"></app-delivery-view>
 
-  <div class="container mt-4 mb-4">
-    <!-- pizzas availables for loop -->
-    <!-- d-flex flex-wrap justify-content-between mt-4 -->
-    <div class="row">
-      <div class="col-8">
-        <div class="d-flex flex-wrap justify-content-evenly rounded-3 pt-4 shadow p-3 mb-5 bg-white">
-          <div *ngFor="let pizza of pizzas">
-            <app-pizza [pizza]="pizza"></app-pizza>
-          </div>
-        </div>
-      </div>
-      <div class="col-4 rounded-3 shadow p-3 mb-5 bg-white">
-        <app-cart class="mt-4"></app-cart>
-      </div>
-    </div>
-  </div>
   <router-outlet></router-outlet>
 </div>
