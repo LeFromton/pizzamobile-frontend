@@ -1,8 +1,28 @@
 <div class="card mb-4 border-0 shadow-sm" style="width: 18rem">
-  <img src="../../../../assets/pizza.png" class="card-img-top img-thumbnail border-0 rounded-0" alt="..."/>
+  <img
+    src="../../../../assets/pizza.png"
+    class="card-img-top img-thumbnail border-0 rounded-0"
+    alt="..."
+  />
   <div class="card-body">
-    <h5 class="card-title">{{pizza.name}}</h5>
-    <p class="card-text">{{pizza.ingredients}}</p>
-    <a href="#" class="btn btn-primary">Add to order</a>
+    <h5 class="card-title">{{ pizza.name }}</h5>
+    <p class="card-text">{{ pizza.ingredients }}</p>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Choose number"
+        aria-label="Choose number"
+        aria-describedby="button-addon2"
+        id="numberOfPizza"
+      />
+      <button
+        class="btn btn-dark"
+        type="Add"
+        id="addToOrder"
+      >
+        Add
+      </button>
+    </div>
   </div>
 </div>
