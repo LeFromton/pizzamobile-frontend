@@ -16,7 +16,7 @@
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title">Margherita</h5>
+              <h5 class="card-title">Margherita CHF 12.-</h5>
               <p class="card-text">Ingredients : Tomate, mozzarella, origan, paprika, sel</p>
               <div class="input-group mb-3">
                 <input
@@ -38,7 +38,7 @@
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title">Napolina</h5>
+              <h5 class="card-title">Napolina CHF 15.-</h5>
               <p class="card-text">Ingredients: Tomate, mozzarella, câpre, anchois, olive, origan</p>
               <div class="input-group mb-3">
                 <input
@@ -60,7 +60,7 @@
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title">Peperoni</h5>
+              <h5 class="card-title">Peperoni CHF 17.-</h5>
               <p class="card-text">Ingredients: Tomate, mozzarella, poivrons, olives noires, origan</p>
               <div class="input-group mb-3">
                 <input
@@ -82,7 +82,7 @@
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title">Diavola</h5>
+              <h5 class="card-title">Diavola CHF 20.-</h5>
               <p class="card-text">Ingredients: Tomate, mozzarella, chorizo, poivrons, ail, origan</p>
               <div class="input-group mb-3">
                 <input
@@ -109,7 +109,7 @@
         </div>
 
         <div class="d-flex justify-content-center mb-5">
-          <button type="button" class="btn btn-create-command" [disabled]="pizzaForm.invalid">
+          <button type="button" class="btn btn-create-command" [disabled]="pizzaForm.invalid" (click)="createCommand()">
             Créer une commande
           </button>
         </div>

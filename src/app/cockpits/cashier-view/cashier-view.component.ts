@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators, ValidatorFn, ValidationErrors} from "@angular/forms";
 
 @Component({
   selector: 'app-cashier-view',
@@ -19,7 +19,6 @@ export class CashierViewComponent implements OnInit {
       diavola: new FormControl(0),
       napolina: new FormControl(0),
       peperoni: new FormControl(0)
-
     })
   }
 
