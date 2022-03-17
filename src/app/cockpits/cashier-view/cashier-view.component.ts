@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-cashier-view',
@@ -8,19 +9,26 @@ import { Component, OnInit } from '@angular/core';
 export class CashierViewComponent implements OnInit {
 
   title = 'pizzamobile-frontend';
+  public pizzaForm: FormGroup;
 
-  pizzas = [
-    { "name": "Margherita", "ingredients": "Tomate, mozzarella, origan" },
-    { "name": "Napoli", "ingredients": "Tomate, mozzarella, câpre, anchois, olive, origan" },
-    { "name": "Peperoni", "ingredients": "Tomate, mozzarella, poivrons, olives noires, origan" },
-    { "name": "Diavola", "ingredients": "Tomate, mozzarella, chorizo, poivrons, ail, origan" },
-  ];
+  constructor() {
 
-  constructor() { }
+    this.pizzaForm = new FormGroup({
+      phone: new FormControl('', [Validators.required]),
+      margherita: new FormControl(0),
+      diavola: new FormControl(0),
+      napolina: new FormControl(0),
+      peperoni: new FormControl(0)
+
+    })
+  }
 
   ngOnInit(): void {
 
-    this.pizzas;
+  }
+
+
+  createCommand(): void {
 
   }
 
