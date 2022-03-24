@@ -1,0 +1,35 @@
+@import "/src/styles.scss";
+
+.cart-container {
+  display: flex;
+  background-color: ghostwhite;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.info-buttons-container {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.image-container {
+  background-image: url("~src/assets/1-18143_3-boxes-of-pizza-cartoon-pizza-transparent-background.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  text-align: center;
+  width: 155px;
+  height: 100px;
+}
+
+.action-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  .btn {
+    height: 30px;
+  }
+}

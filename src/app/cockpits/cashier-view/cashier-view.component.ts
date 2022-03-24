@@ -15,10 +15,10 @@ export class CashierViewComponent implements OnInit {
 
     this.pizzaForm = new FormGroup({
       phone: new FormControl('', [Validators.required]),
-      margherita: new FormControl(0),
-      diavola: new FormControl(0),
-      napolina: new FormControl(0),
-      peperoni: new FormControl(0)
+      margherita: new FormControl(0, [Validators.min(1), Validators.max(10)]),
+      diavola: new FormControl(0,[Validators.min(1), Validators.max(10)]),
+      napolina: new FormControl(0, [Validators.min(1), Validators.max(10)]),
+      peperoni: new FormControl(0, [Validators.min(1), Validators.max(10)])
     })
   }
 

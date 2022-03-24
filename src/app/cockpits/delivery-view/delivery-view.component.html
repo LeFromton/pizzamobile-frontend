@@ -3,18 +3,13 @@
 <div class="container mt-4 mb-4">
   <!-- pizzas availables for loop -->
   <!-- d-flex flex-wrap justify-content-between mt-4 -->
-  <div class="row">
-    <div class="col-3 rounded-3 shadow p-3 mb-5 bg-white">
-      <h2>20 minutes till ready !</h2>
-    </div>
-    <div class="col-3 rounded-3 shadow p-3 mb-5 bg-white">
-      <h2>10 minutes till ready !</h2>
-    </div>
-    <div class="col-3 rounded-3 shadow p-3 mb-5 bg-white">
-      <h2>5 minutes till ready !</h2>
-    </div>
-    <div class="col-3 rounded-3 shadow p-3 mb-5 bg-white">
-      <h2>Ready !</h2>
+  <div class="row justify-content-between">
+    <div class="order-container col-3 rounded-3 shadow p-3 mb-5 bg-white">
+      <h2>Incoming orders</h2>
+      <div>
+        <app-cart></app-cart>
+        <app-cart></app-cart>
+      </div>
     </div>
   </div>
 </div>
