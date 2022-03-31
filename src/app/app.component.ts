@@ -10,8 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   isCashier = false;
-  isChef = false;
-  isDelivery = true;
+  isChef = true;
+  isDelivery = false;
 
 
   ngOnInit() {

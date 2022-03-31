@@ -14,5 +14,4 @@ export class PizzaComponent implements OnInit {
   ngOnInit(): void {
     console.log('data => ', this.pizza);
   }
-
 }
