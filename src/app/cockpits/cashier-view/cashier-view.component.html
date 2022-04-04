@@ -100,7 +100,7 @@
           </div>
         </div>
 
-        <div class="d-flex flex-column phone-number-container align-items-center mb-5">
+        <div class="d-flex flex-column phone-number-container align-items-center mb-3">
           <label>N° de téléphone du client</label>
           <input type="tel" id="phone"
                  class="form-control"
@@ -114,10 +114,12 @@
           <button type="button" class="btn btn-create-command" [disabled]="pizzaForm.invalid" (click)="createCommand()">
             Créer une commande
           </button>
+          <button type="button" class="btn btn-primary" (click)="testBackend()">Backend testing</button>
         </div>
 
       </div>
     </form>
+    <h1 class="text-dark">{{orderData}}</h1>
   </div>
 </div>
 

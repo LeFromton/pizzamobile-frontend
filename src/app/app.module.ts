@@ -8,6 +8,7 @@ import { CashierViewComponent } from './cockpits/cashier-view/cashier-view.compo
 import { ChefViewComponent } from './cockpits/chef-view/chef-view.component';
 import { DeliveryViewComponent } from './cockpits/delivery-view/delivery-view.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {ReactiveFormsModule} from "@angular/forms";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
   ],
