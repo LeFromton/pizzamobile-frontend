@@ -50,14 +50,22 @@ export class CashierViewComponent implements OnInit {
     this.napolina = this.pizzaForm.get('napolina')?.value;
     this.peperoni = this.pizzaForm.get('peperoni')?.value;
 
-    const data = { phone: this.phone, margherita: this.margherita, diavola: this.diavola, napolina: this.napolina, peperoni: this.peperoni };
+    const orderData = {
+      name: 'mcmoser',
+      status: 'new',
+      phone: this.phone,
+      pizzas: 'DDDD',
+      // {
+      //   margherita: this.margherita,
+      //   diavola: this.diavola,
+      //   napolina: this.napolina,
+      //   peperoni: this.peperoni
+      // }
+    };
 
-    var orderData = JSON.stringify(data);
+    this.http.post<any>('http://172.16.230.97:3000/api/orders', orderData);
 
-
-    const order = new Array();
-    order.push(orderData);
-    console.log('order array', order);
+    console.log('order array', orderData);
   }
 
   testBackend() {
