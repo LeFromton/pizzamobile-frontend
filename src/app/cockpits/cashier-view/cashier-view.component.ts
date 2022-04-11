@@ -12,6 +12,7 @@ export class CashierViewComponent implements OnInit {
 
   title = 'pizzamobile-frontend';
   public pizzaForm: FormGroup;
+  name: string = "";
   phone: string = "";
   status: string = "";
   margherita: string = "";
@@ -21,12 +22,14 @@ export class CashierViewComponent implements OnInit {
   pizzas: object = [];
   orderData: object = [];
   dataFromBackend: object = [];
+  errorMessage: string = "";
 
 
   constructor(private http: HttpClient) {
 
     // TODO : if only one pizza is selected allow to submit as well. Right now we can submit the order onyl when every pizza is selected at least once...
     this.pizzaForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
       margherita: new FormControl(0, [Validators.min(1), Validators.max(10)]),
       diavola: new FormControl(0, [Validators.min(1), Validators.max(10)]),
@@ -44,6 +47,7 @@ export class CashierViewComponent implements OnInit {
 
 
   createCommand(): void {
+    this.name = this.pizzaForm.get('name')?.value;
     this.phone = this.pizzaForm.get('phone')?.value;
     this.margherita = this.pizzaForm.get('margherita')?.value;
     this.diavola = this.pizzaForm.get('diavola')?.value;
@@ -51,19 +55,36 @@ export class CashierViewComponent implements OnInit {
     this.peperoni = this.pizzaForm.get('peperoni')?.value;
 
     const orderData = {
-      name: 'mcmoser',
-      status: 'new',
+      name: this.name,
       phone: this.phone,
-      pizzas: 'DDDD',
-      // {
-      //   margherita: this.margherita,
-      //   diavola: this.diavola,
-      //   napolina: this.napolina,
-      //   peperoni: this.peperoni
-      // }
+      status: 'new',
+      pizzas: [
+        {
+          pizzaName: 'margherita',
+          amount: this.margherita
+        },
+        {
+          pizzaName: 'diavola',
+          amount: this.diavola
+        },
+        {
+          pizzaName: 'napolina',
+          amount: this.napolina
+        },
+        {
+          pizzaName: 'peperoni',
+          amount: this.peperoni
+        },
+      ]
     };
 
-    this.http.post<any>('http://172.16.230.97:3000/api/orders', orderData);
+    // send orderData to backend
+    this.http.post<any>('http://172.16.230.97:3000/api/orders', orderData, { responseType: 'json' }).subscribe({
+      error: error => {
+        this.errorMessage = error.message;
+        console.error('There was an error!', error);
+      }
+    });
 
     console.log('order array', orderData);
   }
