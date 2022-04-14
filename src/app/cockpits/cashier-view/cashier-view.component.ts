@@ -22,6 +22,7 @@ export class CashierViewComponent implements OnInit {
   orderData: object = [];
   dataFromBackend: object = [];
   errorMessage: string = "";
+  successMessage: boolean = false;
 
 
   constructor(private http: HttpClient) {
@@ -30,15 +31,15 @@ export class CashierViewComponent implements OnInit {
     this.pizzaForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
-      margherita: new FormControl(0, [Validators.min(1), Validators.max(10)]),
-      diavola: new FormControl(0, [Validators.min(1), Validators.max(10)]),
-      napolina: new FormControl(0, [Validators.min(1), Validators.max(10)]),
-      peperoni: new FormControl(0, [Validators.min(1), Validators.max(10)])
+      margherita: new FormControl(0, [Validators.min(0), Validators.max(10)]),
+      diavola: new FormControl(0, [Validators.min(0), Validators.max(10)]),
+      napolina: new FormControl(0, [Validators.min(0), Validators.max(10)]),
+      peperoni: new FormControl(0, [Validators.min(0), Validators.max(10)])
     })
   }
 
   ngOnInit(): void {
-    this.http.get<any>('http://172.16.230.97:3000/api/orders').subscribe(
+    this.http.get<any>('http://pizzamobile.neuronsless.ch:3000/api/orders').subscribe(
       data => this.dataFromBackend = data
     )
     console.log('backend response', this.dataFromBackend);
@@ -56,7 +57,7 @@ export class CashierViewComponent implements OnInit {
     const orderData = {
       name: this.name,
       phone: this.phone,
-      status: 'new',
+      status: 'cooking',
       pizzas: [
         {
           pizzaName: 'margherita',
@@ -78,18 +79,23 @@ export class CashierViewComponent implements OnInit {
     };
 
     // send orderData to backend
-    this.http.post<any>('http://172.16.230.97:3000/api/orders', orderData, { responseType: 'json' }).subscribe({
+    this.http.post<any>('http://pizzamobile.neuronsless.ch:3000/api/orders', orderData, { responseType: 'json' }).subscribe({
       error: error => {
         this.errorMessage = error.message;
-        console.error('There was an error!', error);
+        console.error('There was an error!', error.status);
+
+        if (error.status === '200' || error.status === '201') {
+          this.successMessage = true;
+        }
       }
     });
 
+
     console.log('order array', orderData);
+    console.log('error', this.errorMessage);
   }
 
   testBackend() {
     console.log('result backend', this.dataFromBackend);
   }
-
 }

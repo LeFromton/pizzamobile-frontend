@@ -106,9 +106,7 @@
           </div>
         </div>
 
-        <div
-          class="d-flex flex-column name-container align-items-center mb-3"
-        >
+        <div class="d-flex flex-column name-container align-items-center mb-3">
           <label>Nom du client</label>
           <input
             type="text"
@@ -147,6 +145,11 @@
           <button type="button" class="btn btn-primary" (click)="testBackend()">
             Backend testing
           </button>
+        </div>
+        <div *ngIf="successMessage">
+          <div class="alert alert-success" role="alert">
+            Order successfully created !
+          </div>
         </div>
       </div>
     </form>
