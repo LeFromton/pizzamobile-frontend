@@ -26,7 +26,6 @@ export class DeliveryViewComponent implements OnInit {
         console.error('There was an error!', error);
       }
     });
-    this.ngOnInit();
-  }
+    }
 
 }

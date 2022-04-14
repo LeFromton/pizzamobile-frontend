@@ -38,10 +38,6 @@ export class CashierViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<any>('http://172.16.230.97:3000/api/orders').subscribe(
-      data => this.dataFromBackend = data
-    )
-    console.log('backend response', this.dataFromBackend);
   }
 
 
@@ -56,7 +52,7 @@ export class CashierViewComponent implements OnInit {
     const orderData = {
       name: this.name,
       phone: this.phone,
-      status: 'new',
+      status: 'cooking',
       pizzas: [
         {
           pizzaName: 'margherita',
@@ -78,18 +74,14 @@ export class CashierViewComponent implements OnInit {
     };
 
     // send orderData to backend
-    this.http.post<any>('http://172.16.230.97:3000/api/orders', orderData, { responseType: 'json' }).subscribe({
+    this.http.post<any>('http://pizzamobile.neuronsless.ch:3000/api/orders', orderData, { responseType: 'json' }).subscribe({
       error: error => {
         this.errorMessage = error.message;
         console.error('There was an error!', error);
       }
     });
-
+    this.pizzaForm.reset();
     console.log('order array', orderData);
-  }
-
-  testBackend() {
-    console.log('result backend', this.dataFromBackend);
   }
 
 }
