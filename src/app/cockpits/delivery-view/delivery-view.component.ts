@@ -20,7 +20,7 @@ export class DeliveryViewComponent implements OnInit {
   }
 
   sendPizzaAsDelivered(id : string) : void {
-    this.http.put<any>('http://pizzamobile.neuronsless.ch:3000/api/orders/'+ id, { status: 'cooked' }).subscribe({
+    this.http.put<any>('http://pizzamobile.neuronsless.ch:3000/api/orders/'+ id, { status: 'delivered' }).subscribe({
       error: error => {
         this.errorMessage = error.message;
         console.error('There was an error!', error);
