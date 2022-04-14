@@ -28,7 +28,7 @@ export class ChefViewComponent implements OnInit {
         console.error('There was an error!', error);
       }
     });
-    this.ngOnInit();
+    window.location.reload();
   }
 
 }

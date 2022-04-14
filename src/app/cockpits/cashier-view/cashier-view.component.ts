@@ -39,12 +39,7 @@ export class CashierViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<any>('http://pizzamobile.neuronsless.ch:3000/api/orders').subscribe(
-      data => this.dataFromBackend = data
-    )
-    console.log('backend response', this.dataFromBackend);
   }
-
 
   createCommand(): void {
     this.name = this.pizzaForm.get('name')?.value;
@@ -91,11 +86,9 @@ export class CashierViewComponent implements OnInit {
     });
 
 
+    this.pizzaForm.reset();
     console.log('order array', orderData);
     console.log('error', this.errorMessage);
   }
 
-  testBackend() {
-    console.log('result backend', this.dataFromBackend);
-  }
 }
