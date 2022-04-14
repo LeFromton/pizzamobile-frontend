@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-chef-view',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChefViewComponent implements OnInit {
 
-  constructor() { }
+  dataFromBackend: any[] | undefined;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get<any>('http://172.16.230.97:3000/api/orders').subscribe(
+      data => this.dataFromBackend = data
+    )
   }
 
 }

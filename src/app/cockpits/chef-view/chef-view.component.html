@@ -5,57 +5,20 @@
     <div class="order-container col-3 rounded-3 shadow p-3 mb-5 bg-white">
       <h2>To be prepared</h2>
       <div class="mt-4">
-        <ul class="list-group">
-          <li
-            class="list-group-item d-flex justify-content-between align-items-start p-3"
-          >
-            <span class="badge bg-secondary rounded-pill">3x</span>
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">Pizza Margherita</div>
+        <ul class="list-group" *ngIf="dataFromBackend">
+          <li class="list-group-item d-flex justify-content-between align-items-start p-3" *ngFor="let item of dataFromBackend">
+            <div class="ms-2">
+              <div class="fw-bold">{{item.name}}'s order</div>
+            </div>
+            <div *ngFor="let pizza of item.pizzas">
+              <p *ngIf="pizza.amount > 0">{{pizza.amount}}X {{pizza.pizzaName}}</p>
             </div>
             <div class="dropdown">
               <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Choose status
+                class="btn btn-secondary"
+                type="button">
+                Ready
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between align-items-start p-3"
-          >
-            <span class="badge bg-secondary rounded-pill">1x</span>
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">Pizza Napolina</div>
-            </div>
-            <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Choose status
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
             </div>
           </li>
         </ul>
