@@ -1,14 +1,28 @@
-<h1 class="text-center mt-4">Delivery</h1>
-
 <div class="container mt-4 mb-4">
   <!-- pizzas availables for loop -->
   <!-- d-flex flex-wrap justify-content-between mt-4 -->
   <div class="row justify-content-between">
     <div class="order-container col-3 rounded-3 shadow p-3 mb-5 bg-white">
-      <h2>Incoming orders</h2>
-      <div>
-        <app-cart></app-cart>
-        <app-cart></app-cart>
+      <h2>To be delivered</h2>
+      <div class="mt-4">
+        <ul class="list-group" *ngIf="dataFromBackend">
+          <li class="list-group-item d-flex justify-content-between align-items-start p-3" *ngFor="let item of dataFromBackend">
+            <div class="ms-2">
+              <div class="fw-bold">{{item.name}}'s order</div>
+            </div>
+            <div *ngFor="let pizza of item.pizzas">
+              <p *ngIf="pizza.amount > 0">{{pizza.amount}}X {{pizza.pizzaName}}</p>
+            </div>
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                (click)="sendPizzaAsDelivered(item._id)">
+                Pizza's ready
+              </button>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

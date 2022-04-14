@@ -9,13 +9,26 @@ import {HttpClient} from "@angular/common/http";
 export class ChefViewComponent implements OnInit {
 
   dataFromBackend: any[] | undefined;
+  errorMessage: string = "";
+  orderData: object = [];
+
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<any>('http://172.16.230.97:3000/api/orders').subscribe(
+    this.http.get<any>('http://pizzamobile.neuronsless.ch:3000/api/orders/filters/cooking').subscribe(
       data => this.dataFromBackend = data
     )
+  }
+
+  sendPizzaToDelivery(id : string) : void {
+    this.http.put<any>('http://pizzamobile.neuronsless.ch:3000/api/orders/'+ id, { status: 'cooked' }).subscribe({
+      error: error => {
+        this.errorMessage = error.message;
+        console.error('There was an error!', error);
+      }
+    });
+    this.ngOnInit();
   }
 
 }

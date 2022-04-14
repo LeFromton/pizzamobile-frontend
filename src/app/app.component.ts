@@ -9,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isCashier = true;
-  isChef = false;
+  isCashier = false;
+  isChef = true;
   isDelivery = false;
 
 
